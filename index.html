@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steadio Academic Management | 學業有人管，進步看得見</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: { DEFAULT:'#006D44', light:'#e8f5ee', dark:'#004d30', accent:'#00a866' },
+        ink: { DEFAULT:'#1a1a1a', light:'#4a4a4a', muted:'#888888' }
+      },
+      fontFamily: {
+        sans: ['DM Sans','Noto Sans TC','sans-serif'],
+        display: ['Noto Sans TC','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,109,68,0.12); }
+.product-tab.active { background:#006D44; color:white; }
+.product-tab { transition: all 0.2s ease; }
+.faq-answer { max-height:0; overflow:hidden; transition: max-height 0.3s ease; }
+.faq-answer.open { max-height:500px; }
+.faq-chevron { transition: transform 0.3s ease; }
+.faq-chevron.open { transform: rotate(180deg); }
+</style>
+</head>
+<body class="bg-white text-ink">
+
+<!-- ========== NAV ========== -->
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+  <a href="#top" class="flex items-center gap-2">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="16" width="6" height="12" rx="1.5" fill="#3a7a5c"/><rect x="11" y="9" width="6" height="19" rx="1.5" fill="#006D44"/><rect x="20" y="2" width="6" height="26" rx="1.5" fill="#006D44"/></svg>
+    <div class="flex flex-col leading-none"><span class="font-bold text-xl tracking-tight text-ink">Steadio</span><span class="text-[10px] text-ink-muted tracking-wide">Academic Management</span></div>
+  </a>
+  <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+    <a href="#why" class="hover:text-brand transition">為何選擇我們</a>
+    <a href="#products" class="hover:text-brand transition">服務方案</a>
+    <a href="#testimonials" class="hover:text-brand transition">家長好評</a>
+    <a href="#order" class="hover:text-brand transition">如何下單</a>
+    <a href="https://wa.me/85298560191" target="_blank" class="bg-brand text-white px-5 py-2.5 rounded-lg hover:bg-brand-dark transition font-medium">WhatsApp 諮詢</a>
+  </div>
+  <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
+</div>
+<div id="mobileMenu" class="hidden md:hidden bg-white border-t px-6 py-4 space-y-3">
+  <a href="#why" class="block py-2 text-sm font-medium hover:text-brand">為何選擇我們</a>
+  <a href="#products" class="block py-2 text-sm font-medium hover:text-brand">服務方案</a>
+  <a href="#testimonials" class="block py-2 text-sm font-medium hover:text-brand">家長好評</a>
+  <a href="#order" class="block py-2 text-sm font-medium hover:text-brand">如何下單</a>
+  <a href="https://wa.me/85298560191" target="_blank" class="block bg-brand text-white text-center py-3 rounded-lg font-medium">WhatsApp 諮詢</a>
+</div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="top" class="pt-28 pb-20 px-6 bg-gradient-to-b from-brand-light/40 to-white">
+<div class="max-w-5xl mx-auto text-center">
+  <div class="inline-block px-4 py-1.5 border border-brand text-brand text-xs font-bold rounded-full mb-8 tracking-wider">2026 全新學科託管模式</div>
+  <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 font-display">
+    學業有人管，<br><span class="text-brand">進步看得見。</span>
+  </h1>
+  <p class="text-lg md:text-xl text-ink-light mb-10 max-w-2xl mx-auto leading-relaxed">
+    紙筆學習，零屏幕時間。<br class="md:hidden">每週進度報告，家長全程透明。<br>
+    用最省心的方式，解決孩子不想做、家長沒空管的問題。
+  </p>
+  <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+    <a href="#products" class="bg-brand text-white px-8 py-4 rounded-lg font-bold hover:bg-brand-dark transition shadow-lg shadow-brand/20 text-lg">查看服務方案</a>
+    <a href="https://wa.me/85298560191" target="_blank" class="border-2 border-ink px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition text-lg">免費諮詢</a>
+  </div>
+  <div class="flex flex-wrap justify-center gap-6 text-sm text-ink-muted">
+    <span class="flex items-center gap-1.5"><span class="text-brand font-bold">✓</span> 紙筆學習（零螢幕時間）</span>
+    <span class="flex items-center gap-1.5"><span class="text-brand font-bold">✓</span> 香港八大院校導師</span>
+    <span class="flex items-center gap-1.5"><span class="text-brand font-bold">✓</span> 數據化進度報告</span>
+    <span class="flex items-center gap-1.5"><span class="text-brand font-bold">✓</span> 全港順豐到站</span>
+  </div>
+</div>
+</section>
+
+<!-- ========== WHY US ========== -->
+<section id="why" class="py-20 px-6">
+<div class="max-w-6xl mx-auto">
+  <div class="text-center mb-16">
+    <p class="text-brand font-bold text-sm tracking-wider mb-3">WHY STEADIO</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 font-display">為什麼家長選擇我們？</h2>
+    <p class="text-ink-light max-w-2xl mx-auto">補習老師到處都有，但你需要的不只是「教」——你需要有人<strong class="text-ink">幫你管</strong>。</p>
+  </div>
+
+  <div class="bg-gray-50 rounded-2xl p-8 md:p-12 mb-12">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <p class="text-brand font-bold text-sm mb-4">家長的真實困境</p>
+        <div class="space-y-4">
+          <div class="flex gap-3"><span class="text-red-400 text-xl mt-0.5">✕</span><p class="text-ink-light">「成績差要補，但補完之後中間幾日完全空白。」</p></div>
+          <div class="flex gap-3"><span class="text-red-400 text-xl mt-0.5">✕</span><p class="text-ink-light">「我冇時間坐喺度睇住佢做功課。」</p></div>
+          <div class="flex gap-3"><span class="text-red-400 text-xl mt-0.5">✕</span><p class="text-ink-light">「唔知佢弱喺邊，每次出成績先知出事。」</p></div>
+          <div class="flex gap-3"><span class="text-red-400 text-xl mt-0.5">✕</span><p class="text-ink-light">「線上課程 = 開住手機偷偷打機。」</p></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-brand font-bold text-sm mb-4">Steadio 的解決方式</p>
+        <div class="space-y-4">
+          <div class="flex gap-3"><span class="text-brand text-xl mt-0.5">✓</span><p>由星期一管到星期日，填滿所有空窗期。</p></div>
+          <div class="flex gap-3"><span class="text-brand text-xl mt-0.5">✓</span><p>導師主動追蹤打卡，家長只需看每週報告。</p></div>
+          <div class="flex gap-3"><span class="text-brand text-xl mt-0.5">✓</span><p>每份練習卷附錯題診斷，弱項一目了然。</p></div>
+          <div class="flex gap-3"><span class="text-brand text-xl mt-0.5">✓</span><p>全程紙筆學習，孩子做完影相交就得。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white border border-gray-100 rounded-xl p-8 card-hover text-center">
+      <div class="text-4xl mb-4">✏️</div>
+      <h3 class="font-bold text-lg mb-2">紙筆學習・零屏幕</h3>
+      <p class="text-ink-light text-sm leading-relaxed">孩子在紙上做題，做完 WhatsApp 影相交功課，前後不超過 5 秒屏幕時間。全程零機會分心。</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-8 card-hover text-center">
+      <div class="text-4xl mb-4">📊</div>
+      <h3 class="font-bold text-lg mb-2">數據化進度報告</h3>
+      <p class="text-ink-light text-sm leading-relaxed">每週日收到 PDF 進度報告，涵蓋完成率、正確率、弱項分析、下週計劃。進步清清楚楚。</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-8 card-hover text-center">
+      <div class="text-4xl mb-4">🎓</div>
+      <h3 class="font-bold text-lg mb-2">香港八大院校導師</h3>
+      <p class="text-ink-light text-sm leading-relaxed">導師均來自香港八大院校，具備專業學科知識。所有練習卷按學校考核風格出題，非坊間通用題。</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========== PRODUCTS ========== -->
+<section id="products" class="py-20 px-6 bg-gray-50">
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mb-12">
+    <p class="text-brand font-bold text-sm tracking-wider mb-3">OUR SERVICES</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 font-display">服務方案</h2>
+    <p class="text-ink-light">按需求選擇，或 WhatsApp 客服獲取建議。<br class="md:hidden">客服時間：星期一至五 12:00 - 19:00</p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-2 mb-10" id="productTabs">
+    <button onclick="showProduct(0)" class="product-tab active px-5 py-2.5 rounded-full text-sm font-medium border border-brand">週間托管包</button>
+    <button onclick="showProduct(1)" class="product-tab px-5 py-2.5 rounded-full text-sm font-medium border border-gray-300 text-ink-light">全托管計劃</button>
+    <button onclick="showProduct(2)" class="product-tab px-5 py-2.5 rounded-full text-sm font-medium border border-gray-300 text-ink-light">By-Topic 專項練習</button>
+    <button onclick="showProduct(3)" class="product-tab px-5 py-2.5 rounded-full text-sm font-medium border border-gray-300 text-ink-light">考前衝刺包</button>
+  </div>
+
+  <!-- ===== Product 0: Weekly Tracking ===== -->
+  <div class="product-panel" id="product0">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <h3 class="text-2xl font-bold">週間托管包</h3>
+          <p class="text-ink-muted text-sm mt-1">Weekly Academic Tracking Plan</p>
+        </div>
+        <div class="text-right">
+          <p class="text-3xl font-black text-brand">$388<span class="text-base font-normal text-ink-muted">/月</span></p>
+          <p class="text-xs text-ink-muted mt-1">首週體驗 $98</p>
+        </div>
+      </div>
+
+      <p class="text-ink-light mb-6 leading-relaxed">基礎追蹤型服務。每週由家長自選一個 Topic，導師出練習卷，一三五 WhatsApp 打卡追蹤，每週日收到品牌化 PDF 進度報告。報名後於最近的完整星期開始服務，系統隨機匹配導師。</p>
+
+      <div class="mb-8">
+        <p class="font-bold text-sm mb-3 text-brand">服務包含</p>
+        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>每週 1 個 Topic 針對性練習卷（60 題，分 3 組）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>一三五 WhatsApp 打卡（每日 16:00-18:00）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>每週日 PDF 品牌化進度報告</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>導師主動提醒（學生未交即追蹤）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>錯題診斷回饋（語音/文字）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>導師按需拍攝教學短片輔助學習</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>Topic 由家長自行選擇</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>練習卷可選電子發送或郵寄（+$20 運費）</span></div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <p class="font-bold text-sm mb-3 text-brand">每週運作流程</p>
+        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+          <div class="bg-brand-light rounded-lg p-3">
+            <p class="font-bold text-brand mb-1">週一</p>
+            <p class="text-ink-light">16:00-18:00<br>做 Q1-20 影相交</p>
+          </div>
+          <div class="bg-brand-light rounded-lg p-3">
+            <p class="font-bold text-brand mb-1">週三</p>
+            <p class="text-ink-light">16:00-18:00<br>做 Q21-40 影相交</p>
+          </div>
+          <div class="bg-brand-light rounded-lg p-3">
+            <p class="font-bold text-brand mb-1">週五</p>
+            <p class="text-ink-light">16:00-18:00<br>做 Q41-60 影相交</p>
+          </div>
+          <div class="bg-brand rounded-lg p-3 text-white">
+            <p class="font-bold mb-1">週日</p>
+            <p class="text-green-100">家長收<br>進度報告</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="font-bold text-sm mb-2">優惠方案</p>
+        <div class="text-sm text-ink-light space-y-1">
+          <p>季付（3 個月）：<strong class="text-ink">$1,106</strong>（95 折，省 $58）</p>
+          <p>半年付（6 個月）：<strong class="text-ink">$2,095</strong>（9 折，省 $233）</p>
+          <p>兄弟姊妹同一家庭第 2 位起：<strong class="text-ink">月費 85 折</strong></p>
+          <p>成功轉介新客戶：<strong class="text-ink">推薦人下月減 $50</strong></p>
+        </div>
+      </div>
+
+      <a href="https://wa.me/85298560191?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E5%A0%B1%E5%90%8D%E3%80%90%E9%80%B1%E9%96%93%E6%89%98%E7%AE%A1%E5%8C%85%20%24388%2F%E6%9C%88%E3%80%91%E3%80%82%0A%0A%E5%AD%B8%E7%94%9F%E5%A7%93%E5%90%8D%EF%BC%9A%0A%E5%B9%B4%E7%B4%9A%EF%BC%9A%0A%E5%AD%B8%E6%A0%A1%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A7%91%E6%9B%B8%EF%BC%9A%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%E6%96%B0%E6%80%9D%E7%B6%AD%20%2F%20%E7%89%9B%E6%B4%A5%E6%95%B8%E5%AD%B8%20%2F%20%E7%8F%BE%E4%BB%A3%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%0A%E6%9C%80%E8%BF%91%E8%80%83%E8%A9%A6%E5%88%86%E6%95%B8%EF%BC%9A%0A%E5%AE%B6%E9%95%B7%E8%A6%BA%E5%BE%97%E7%9A%84%E5%BC%B1%E9%A0%85%EF%BC%9A%0A%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A5%E5%89%8D%E8%80%83%E8%A9%A6%E5%8D%B7%E5%8F%AF%E6%8F%90%E4%BE%9B%EF%BC%9A%E6%98%AF%20%2F%20%E5%90%A6%0A%E5%B8%8C%E6%9C%9B%E7%B7%B4%E7%BF%92%E7%9A%84Topic%EF%BC%9A%0A%E7%B7%B4%E7%BF%92%E5%8D%B7%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%9B%BB%E5%AD%90%E7%99%BC%E9%80%81%20%2F%20%E9%83%B5%E5%AF%84%EF%BC%88%2B%2420%EF%BC%89" target="_blank" class="block w-full text-center bg-brand text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition">立即報名</a>
+    </div>
+
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-3">進度報告預覽</p>
+        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
+          <div class="text-center px-6"><div class="text-4xl mb-3">📋</div><p class="text-ink-muted text-sm font-medium">Weekly Progress Report</p><p class="text-xs text-ink-muted mt-1">品牌化 PDF 進度報告模板</p></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-4">常見問題</p>
+        <div class="space-y-0 divide-y divide-gray-100">
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>報名後什麼時候開始？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">報名付款後，服務會在最近的完整星期（星期一）正式開始。例如週三報名，則下週一開始第一次打卡。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>打卡時間是什麼時候？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">每個打卡日（一三五）的下午 4:00 至 6:00。這是孩子放學後最集中的學習時段，也是大部分家庭溫習功課的黃金時間。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>打卡沒交怎麼辦？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">導師會主動 WhatsApp 追蹤提醒。如果連續 2 週未打卡，導師會通知家長並主動建議暫停訂閱。我們重視的是學習效果，不是綁住客戶。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>導師是怎麼分配的？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">報名後系統會隨機匹配一位導師。所有導師均來自香港八大院校，首次對話時會提供學歷認證。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>練習卷怎麼送到我手上？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">兩種方式任選：① 電子發送（Google Drive，免運費）② 順豐到站郵寄（+$20 運費）。報名時選擇即可。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>同一個 Topic 做完再做會重複嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">不會。再次選擇同一個 Topic，保證更換全新題目。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>報名需要準備什麼？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">學生姓名、年級、學校名稱、使用的教科書版本、最近的考試分數。如有以前的考試卷和家長留意到的弱項，歡迎一併提供，方便我們建議最適合的服務方案。5 分鐘內完成報名。</div></div>
+        </div>
+      </div>
+      <div class="bg-brand text-white rounded-2xl p-6">
+        <p class="font-bold text-sm mb-3">報名流程</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span><span>WhatsApp 聯繫客服，提供基本資料及考試卷/分數</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span><span>客服協助選擇方案，系統匹配導師</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span><span>FPS / PayMe / WeChat Pay / Alipay 付款</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span><span>最近的完整星期一正式開始服務</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ===== Product 1: Full Management ===== -->
+  <div class="product-panel hidden" id="product1">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border-2 border-brand relative overflow-hidden">
+      <div class="absolute top-0 right-0 bg-brand text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl">MOST POPULAR</div>
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <h3 class="text-2xl font-bold">全托管計劃</h3>
+          <p class="text-ink-muted text-sm mt-1">Full Academic Management Plan</p>
+        </div>
+        <div class="text-right">
+          <p class="text-3xl font-black text-brand">$588<span class="text-base font-normal text-ink-muted">/月</span></p>
+        </div>
+      </div>
+
+      <p class="text-ink-light mb-6 leading-relaxed">深度管理型服務。包含週間托管所有服務，區別在於每週的 Topic 由導師根據學生弱項診斷推薦（家長亦可自選），加上月度總結報告、每月導師通話、個人化動態出卷。報名後於最近的完整星期開始，系統隨機匹配導師。</p>
+
+      <div class="mb-6">
+        <p class="font-bold text-sm mb-3 text-brand">包含週間托管所有服務，另加</p>
+        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">★</span><span>每週 Topic 由導師診斷推薦（亦可自選）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">★</span><span>月度深度總結報告</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">★</span><span>每月 15 分鐘導師語音通話</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">★</span><span>個人化動態出卷（按弱項調整）</span></div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-3">週間托管 vs 全托管</p>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div></div><div class="font-medium text-ink-muted">週間托管</div><div class="font-medium text-brand">全托管</div>
+          <div class="text-left text-ink-light">Topic 選擇</div><div>家長自選</div><div class="font-bold">導師推薦/自選</div>
+          <div class="text-left text-ink-light">出卷方式</div><div>固定出卷</div><div class="font-bold">動態調整</div>
+          <div class="text-left text-ink-light">報告</div><div>每週</div><div class="font-bold">每週+月度</div>
+          <div class="text-left text-ink-light">家長溝通</div><div>WhatsApp</div><div class="font-bold">WA+月度通話</div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="font-bold text-sm mb-2">優惠方案</p>
+        <div class="text-sm text-ink-light space-y-1">
+          <p>季付（3 個月）：<strong class="text-ink">$1,676</strong>（95 折，省 $88）</p>
+          <p>半年付（6 個月）：<strong class="text-ink">$3,175</strong>（9 折，省 $353）</p>
+          <p>兄弟姊妹同一家庭第 2 位起：<strong class="text-ink">月費 85 折</strong></p>
+          <p>全托管客戶購買 By-Topic：<strong class="text-ink">$99 → $79（減 $20）</strong></p>
+          <p>全托管客戶購買考前衝刺包：<strong class="text-ink">$288 → $258（減 $30）</strong></p>
+        </div>
+      </div>
+
+      <a href="https://wa.me/85298560191?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E5%A0%B1%E5%90%8D%E3%80%90%E5%85%A8%E6%89%98%E7%AE%A1%E8%A8%88%E5%8A%83%20%24588%2F%E6%9C%88%E3%80%91%E3%80%82%0A%0A%E5%AD%B8%E7%94%9F%E5%A7%93%E5%90%8D%EF%BC%9A%0A%E5%B9%B4%E7%B4%9A%EF%BC%9A%0A%E5%AD%B8%E6%A0%A1%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A7%91%E6%9B%B8%EF%BC%9A%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%E6%96%B0%E6%80%9D%E7%B6%AD%20%2F%20%E7%89%9B%E6%B4%A5%E6%95%B8%E5%AD%B8%20%2F%20%E7%8F%BE%E4%BB%A3%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%0A%E6%9C%80%E8%BF%91%E8%80%83%E8%A9%A6%E5%88%86%E6%95%B8%EF%BC%9A%0A%E5%AE%B6%E9%95%B7%E8%A6%BA%E5%BE%97%E7%9A%84%E5%BC%B1%E9%A0%85%EF%BC%9A%0A%E6%98%AF%E5%90%A6%E6%9C%89%E4%BB%A5%E5%89%8D%E8%80%83%E8%A9%A6%E5%8D%B7%E5%8F%AF%E6%8F%90%E4%BE%9B%EF%BC%9A%E6%98%AF%20%2F%20%E5%90%A6%0A%E7%B7%B4%E7%BF%92%E5%8D%B7%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%9B%BB%E5%AD%90%E7%99%BC%E9%80%81%20%2F%20%E9%83%B5%E5%AF%84%EF%BC%88%2B%2420%EF%BC%89" target="_blank" class="block w-full text-center bg-brand text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition">立即報名</a>
+    </div>
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-3">月度總結報告預覽</p>
+        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
+          <div class="text-center px-6"><div class="text-4xl mb-3">📊</div><p class="text-ink-muted text-sm font-medium">Monthly Summary Report</p><p class="text-xs text-ink-muted mt-1">月度深度總結分析</p></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-4">常見問題</p>
+        <div class="space-y-0 divide-y divide-gray-100">
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>全托管和週間托管的最大分別？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">最大分別是 Topic 選擇方式。週間托管由家長自選，全托管由導師根據弱項診斷推薦（當然也可自選）。另外全托管多了月度總結報告和每月 15 分鐘導師通話。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>每週也是只做一個 Topic 嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">是的，每週一個 Topic。全托管的區別在於這個 Topic 由導師根據學生弱項診斷後推薦，更加針對性。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>月度通話講什麼？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">導師會講解孩子整個月的學習狀況、進步趨勢、弱項分析，以及下個月的練習計劃和建議。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>可以從週間托管升級嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">可以，隨時升級。差額按日計算。</div></div>
+        </div>
+      </div>
+      <div class="bg-brand text-white rounded-2xl p-6">
+        <p class="font-bold text-sm mb-3">報名流程</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span><span>WhatsApp 聯繫客服，提供資料及考試卷/分數</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span><span>客服協助，系統匹配導師</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span><span>導師分析弱項，制定首週 Topic</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span><span>付款後最近完整星期一開始</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ===== Product 2: By-Topic ===== -->
+  <div class="product-panel hidden" id="product2">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
+      <div class="flex items-start justify-between mb-6">
+        <div><h3 class="text-2xl font-bold">By-Topic 專項練習</h3><p class="text-ink-muted text-sm mt-1">Targeted Topic Practice</p></div>
+        <div class="text-right"><p class="text-3xl font-black text-brand">$99<span class="text-base font-normal text-ink-muted">/份</span></p><p class="text-xs text-ink-muted mt-1">一次性購買・直接聯繫客服</p></div>
+      </div>
+      <p class="text-ink-light mb-6 leading-relaxed">針對性弱項擊破工具，無需報名任何計劃，直接向客服購買即可。每份 60 題，按真實學校考試風格出題，附完整答案及解題思路 PDF，學生可自行對答案學習。如有疑問可向客服有限度提問。</p>
+      <div class="mb-8">
+        <p class="font-bold text-sm mb-3 text-brand">每份包含</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>實體練習卷 60 題（分 3 組各 20 題，按 Subtopic 分段）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>完整答案及解題思路 PDF（自行對答案）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>有限度答疑支援（如有不明白可向客服提問）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>題目按學校真實考試風格出題</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>再次購買同一 Topic 保證全新題目</span></div>
+        </div>
+      </div>
+      <div class="bg-amber-50 border border-amber-100 rounded-xl p-4 mb-6 text-sm">
+        <p class="text-amber-800"><strong>請注意：</strong>本產品不包含批改服務。練習卷附完整答案 PDF，學生可自行核對。如需導師批改及個人化錯題診斷，建議選擇週間托管包或全托管計劃。</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-2">交付方式（二選一）</p>
+        <p class="text-ink-light">① 電子發送（Google Drive，免運費）</p>
+        <p class="text-ink-light">② 順豐到站郵寄（+$20 運費）</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-2">托管客戶優惠</p>
+        <p class="text-ink-light">週間托管客戶購買：<strong class="text-ink">$99 → $89（減 $10）</strong></p>
+        <p class="text-ink-light">全托管客戶購買：<strong class="text-ink">$99 → $79（減 $20）</strong></p>
+      </div>
+      <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold text-blue-800 mb-1">如何購買</p>
+        <p class="text-blue-700">直接 WhatsApp 客服購買，無需報名任何計劃。告知想練習的 Topic 和交付方式即可。</p>
+        <p class="text-blue-600 text-xs mt-1">客服時間：星期一至五 12:00 - 19:00</p>
+      </div>
+      <a href="https://wa.me/85298560191?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%B3%BC%E8%B2%B7%E3%80%90By-Topic%20%E5%B0%88%E9%A0%85%E7%B7%B4%E7%BF%92%20%2499%2F%E4%BB%BD%E3%80%91%E3%80%82%0A%0A%E5%AD%B8%E7%94%9F%E5%A7%93%E5%90%8D%EF%BC%9A%0A%E5%B9%B4%E7%B4%9A%EF%BC%9A%0A%E5%AD%B8%E6%A0%A1%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A7%91%E6%9B%B8%EF%BC%9A%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%E6%96%B0%E6%80%9D%E7%B6%AD%20%2F%20%E7%89%9B%E6%B4%A5%E6%95%B8%E5%AD%B8%20%2F%20%E7%8F%BE%E4%BB%A3%E5%B0%8F%E5%AD%B8%E6%95%B8%E5%AD%B8%0A%E6%83%B3%E7%B7%B4%E7%BF%92%E7%9A%84Topic%EF%BC%9A%0A%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%9B%BB%E5%AD%90%E7%99%BC%E9%80%81%20%2F%20%E9%83%B5%E5%AF%84%EF%BC%88%2B%2420%EF%BC%89" target="_blank" class="block w-full text-center bg-brand text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition">WhatsApp 客服購買</a>
+    </div>
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-3">練習卷預覽</p>
+        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
+          <div class="text-center px-6"><div class="text-4xl mb-3">📝</div><p class="text-ink-muted text-sm font-medium">By-Topic Worksheet Sample</p><p class="text-xs text-ink-muted mt-1">60 題專項練習卷樣本</p></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-4">常見問題</p>
+        <div class="space-y-0 divide-y divide-gray-100">
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>題目和坊間練習有什麼不同？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">我們的題目是基於學校真實考試卷拆解出題的，不是網上通用練習。題型、風格、難度都對標學校考核模式。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>怎麼知道孩子弱在哪個 Topic？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">WhatsApp 客服並提供孩子以前的考試卷和最近分數，我們會免費分析弱項並建議從哪個 Topic 開始。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>包含批改服務嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">By-Topic 練習卷不包含批改服務，但附有完整答案及解題思路 PDF，學生可自行對答案。如有個別題目不明白，可以向客服有限度提問。如需導師批改和個人化錯題診斷，建議選擇我們的托管計劃。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>需要報名托管計劃才能買嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">不需要。By-Topic 練習卷獨立銷售，直接向客服購買即可。托管客戶享折扣優惠。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ===== Product 3: Exam Sprint ===== -->
+  <div class="product-panel hidden" id="product3">
+  <div class="grid lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
+      <div class="flex items-start justify-between mb-6">
+        <div><h3 class="text-2xl font-bold">考前衝刺包</h3><p class="text-ink-muted text-sm mt-1">Pre-Exam Sprint Package</p></div>
+        <div class="text-right"><p class="text-3xl font-black text-brand">$288<span class="text-base font-normal text-ink-muted">/份</span></p><p class="text-xs text-ink-muted mt-1">季節性・考前限時</p></div>
+      </div>
+      <p class="text-ink-light mb-6 leading-relaxed">考試季限時推出。完整模擬考試卷、重點錯題整理、考前語音重點溫習、WhatsApp 即時答疑。發送時間由導師與家長溝通安排，配合各導師時間發送。</p>
+      <div class="mb-8">
+        <p class="font-bold text-sm mb-3 text-brand">每份包含</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>全真模擬 Mock 卷 1 份（難度對標該學期期末試）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>10 大核心錯題邏輯診斷（PDF）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>導師考前語音重點溫習（10-15 分鐘）</span></div>
+          <div class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>WhatsApp 即時答疑（按導師時間預約安排）</span></div>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-2">發送安排</p>
+        <p class="text-ink-light">購買後由導師直接與家長溝通，配合各導師時間安排發送及答疑時段。</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-2">交付方式（二選一）</p>
+        <p class="text-ink-light">① 電子發送（Google Drive，免運費）</p>
+        <p class="text-ink-light">② 順豐到站郵寄（+$20 運費）</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-6 text-sm">
+        <p class="font-bold mb-2">托管客戶優惠</p>
+        <p class="text-ink-light">任何托管計劃客戶購買：<strong class="text-ink">$288 → $258（減 $30）</strong></p>
+      </div>
+      <a href="https://wa.me/85298560191?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%B3%BC%E8%B2%B7%E3%80%90%E8%80%83%E5%89%8D%E8%A1%9D%E5%88%BA%E5%8C%85%20%24288%E3%80%91%E3%80%82%0A%0A%E5%AD%B8%E7%94%9F%E5%A7%93%E5%90%8D%EF%BC%9A%0A%E5%B9%B4%E7%B4%9A%EF%BC%9A%0A%E5%AD%B8%E6%A0%A1%E5%90%8D%E7%A8%B1%EF%BC%9A%0A%E8%80%83%E8%A9%A6%E6%97%A5%E6%9C%9F%EF%BC%9A%0A%E4%BA%A4%E4%BB%98%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%9B%BB%E5%AD%90%E7%99%BC%E9%80%81%20%2F%20%E9%83%B5%E5%AF%84%EF%BC%88%2B%2420%EF%BC%89" target="_blank" class="block w-full text-center bg-brand text-white py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition">WhatsApp 客服購買</a>
+    </div>
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-100 p-6">
+        <p class="font-bold text-sm mb-4">常見問題</p>
+        <div class="space-y-0 divide-y divide-gray-100">
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>什麼時候可以購買？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">每學期考試季發售。我們會透過 WhatsApp 提前通知。也可以隨時向客服查詢近期考前衝刺包的開放日期。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>答疑時間怎麼安排？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">購買後導師會直接與家長溝通，根據導師的時間安排答疑時段。以 WhatsApp 方式進行。</div></div>
+          <div class="faq-item py-3"><button onclick="toggleFaq(this)" class="flex justify-between items-center w-full text-left text-sm font-medium"><span>沒有報托管計劃也能買嗎？</span><span class="faq-chevron text-ink-muted">▼</span></button><div class="faq-answer text-sm text-ink-light mt-2 leading-relaxed">可以。直接向客服購買即可。托管客戶享有 $30 折扣。</div></div>
+        </div>
+      </div>
+      <div class="bg-brand text-white rounded-2xl p-6">
+        <p class="font-bold text-sm mb-3">購買流程</p>
+        <div class="space-y-3 text-sm">
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span><span>WhatsApp 客服查詢及購買</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span><span>付款確認</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span><span>導師與家長溝通發送時間</span></div>
+          <div class="flex gap-3"><span class="bg-white text-brand w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span><span>收到 Mock 卷 + 錯題 PDF + 語音 + 答疑</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials" class="py-20 px-6">
+<div class="max-w-6xl mx-auto">
+  <div class="text-center mb-12">
+    <p class="text-brand font-bold text-sm tracking-wider mb-3">PARENT REVIEWS</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 font-display">家長真實好評</h2>
+    <p class="text-ink-light">來自正在使用 Steadio 服務的家長分享</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「以前每日都要催佢做功課，搞到自己好大壓力。報咗週間托管之後，一三五佢自己影相交俾老師，我星期日收報告就得。真係省心好多。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">C</div>
+        <div><p class="font-medium text-sm">陳太</p><p class="text-xs text-ink-muted">P4 學生家長・週間托管包</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「最鍾意嗰份進度報告，每個 Topic 正確率幾多一睇就知。之前完全唔知佢弱喺分數定面積，依家清清楚楚。老師仲會語音講解錯題，好用心。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">L</div>
+        <div><p class="font-medium text-sm">李太</p><p class="text-xs text-ink-muted">P4 學生家長・全托管計劃</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「本身只係買咗個 By-Topic 試下，做完老師話佢乘除應用題好弱，建議我報托管。報咗之後個仔數學真係進步咗，考試升咗十幾分。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">W</div>
+        <div><p class="font-medium text-sm">黃太</p><p class="text-xs text-ink-muted">P3 學生家長・由 By-Topic 升級全托管</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「最 appreciate 係零屏幕時間呢個 concept。我個仔成日偷偷打機，依家做練習完全唔使開手機，做完影張相交就得。終於搵到一個方法唔使同佢爭手機。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">H</div>
+        <div><p class="font-medium text-sm">何生</p><p class="text-xs text-ink-muted">P5 學生家長・週間托管包</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「考前衝刺包真係救星。Mock 卷嘅題型同學校考試好似，個仔做完之後考試見到類似嘅題目完全唔驚。語音重點溫習嗰 15 分鐘好精華。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">M</div>
+        <div><p class="font-medium text-sm">馬太</p><p class="text-xs text-ink-muted">P4 學生家長・考前衝刺包</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-7 card-hover">
+      <div class="flex gap-1 text-brand mb-4">★★★★★</div>
+      <p class="text-ink-light text-sm leading-relaxed mb-5">「兩個仔都報咗，細佬 P2 大佬 P4。兄弟姊妹折扣好抵，第二個 85 折。老師出嘅卷真係唔同年級唔同程度，唔係 copy paste。」</p>
+      <div class="flex items-center gap-3 border-t border-gray-50 pt-4">
+        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand font-bold text-sm">T</div>
+        <div><p class="font-medium text-sm">鄧太</p><p class="text-xs text-ink-muted">P2+P4 學生家長・全托管計劃 ×2</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========== ORDER ========== -->
+<section id="order" class="py-20 px-6 bg-gray-50">
+<div class="max-w-4xl mx-auto text-center">
+  <p class="text-brand font-bold text-sm tracking-wider mb-3">HOW TO ORDER</p>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4 font-display">如何下單</h2>
+  <p class="text-ink-light mb-12">簡簡單單三步，5 分鐘搞掂。</p>
+
+  <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <div class="text-center">
+      <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">1</div>
+      <h3 class="font-bold text-lg mb-2">WhatsApp 聯繫客服</h3>
+      <p class="text-ink-light text-sm">點擊下方按鈕，客服會在工作時間內回覆你的查詢，協助選擇合適方案。</p>
+      <p class="text-xs text-ink-muted mt-2">客服時間：星期一至五 12:00-19:00</p>
+    </div>
+    <div class="text-center">
+      <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">2</div>
+      <h3 class="font-bold text-lg mb-2">導師跟進</h3>
+      <p class="text-ink-light text-sm">確認細節後，系統隨機匹配導師。導師首次對話會介紹自己的學歷認證（香港八大院校）。</p>
+    </div>
+    <div class="text-center">
+      <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">3</div>
+      <h3 class="font-bold text-lg mb-2">付款・開始</h3>
+      <p class="text-ink-light text-sm">支持 FPS、PayMe、WeChat Pay、Alipay。托管計劃於最近的完整星期一開始服務。</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl p-8 border border-gray-100 max-w-2xl mx-auto mb-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-6">
+      <div><p class="text-xs text-ink-muted mb-1">支付方式</p><p class="font-bold text-sm">FPS / PayMe /<br>WeChat Pay / Alipay</p></div>
+      <div><p class="text-xs text-ink-muted mb-1">官方 WhatsApp</p><p class="font-bold text-sm">9856 0191</p></div>
+      <div><p class="text-xs text-ink-muted mb-1">客服時間</p><p class="font-bold text-sm">週一至五<br>12:00-19:00</p></div>
+      <div><p class="text-xs text-ink-muted mb-1">導師資歷</p><p class="font-bold text-sm">香港八大院校</p></div>
+    </div>
+    <div class="text-xs text-ink-muted space-y-1">
+      <p>所有導師均來自香港八大院校，首次對話時會提供學歷認證。</p>
+      <p>練習卷交付：電子發送（免費）或順豐到站郵寄（+$20 運費），報名時選擇。</p>
+    </div>
+  </div>
+
+  <a href="https://wa.me/85298560191" target="_blank" class="inline-block bg-brand text-white px-12 py-5 rounded-xl font-bold text-xl hover:bg-brand-dark transition shadow-lg shadow-brand/20">WhatsApp 立即諮詢</a>
+</div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-ink text-white py-12 px-6">
+<div class="max-w-5xl mx-auto text-center">
+  <div class="flex items-center justify-center gap-2 mb-4">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="16" width="6" height="12" rx="1.5" fill="#3a7a5c"/><rect x="11" y="9" width="6" height="19" rx="1.5" fill="#006D44"/><rect x="20" y="2" width="6" height="26" rx="1.5" fill="#006D44"/></svg>
+    <div class="flex flex-col leading-none text-left"><span class="font-bold text-xl tracking-tight">Steadio</span><span class="text-[10px] text-gray-400 tracking-wide">Academic Management</span></div>
+  </div>
+  <p class="text-brand font-medium mb-2">學業有人管，進步看得見。</p>
+  <p class="text-gray-400 text-sm mb-8">Progress, managed.</p>
+  <div class="flex justify-center gap-8 text-sm text-gray-400 mb-8">
+    <a href="#products" class="hover:text-white transition">服務方案</a>
+    <a href="#testimonials" class="hover:text-white transition">家長好評</a>
+    <a href="#order" class="hover:text-white transition">如何下單</a>
+    <a href="https://wa.me/85298560191" target="_blank" class="hover:text-white transition">WhatsApp</a>
+  </div>
+  <p class="text-xs text-gray-600">&copy; 2026 Steadio Academic Management. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', function(){
+  document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+});
+
+function showProduct(idx){
+  document.querySelectorAll('.product-panel').forEach((p,i)=>{
+    p.classList.toggle('hidden', i!==idx);
+  });
+  document.querySelectorAll('.product-tab').forEach((t,i)=>{
+    if(i===idx){ t.classList.add('active'); t.classList.remove('text-ink-light','border-gray-300'); t.classList.add('border-brand'); }
+    else { t.classList.remove('active'); t.classList.add('text-ink-light','border-gray-300'); t.classList.remove('border-brand'); }
+  });
+}
+
+function toggleFaq(btn){
+  const answer = btn.nextElementSibling;
+  const chevron = btn.querySelector('.faq-chevron');
+  answer.classList.toggle('open');
+  chevron.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
