@@ -33,11 +33,14 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 .faq-answer.open { max-height:500px; }
 .faq-chevron { transition: transform 0.3s ease; }
 .faq-chevron.open { transform: rotate(180deg); }
+/* 新增：滑動容器樣式 */
+.preview-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; gap: 8px; border-radius: 12px; }
+.preview-slider::-webkit-scrollbar { display: none; }
+.preview-slider img { flex-shrink: 0; width: 100%; scroll-snap-align: start; object-fit: contain; border-radius: 8px; background: white; }
 </style>
 </head>
 <body class="bg-white text-ink">
 
-<!-- ========== NAV ========== -->
 <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
 <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
   <a href="#top" class="flex items-center gap-2">
@@ -62,7 +65,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </nav>
 
-<!-- ========== HERO ========== -->
 <section id="top" class="pt-28 pb-20 px-6 bg-gradient-to-b from-brand-light/40 to-white">
 <div class="max-w-5xl mx-auto text-center">
   <div class="inline-block px-4 py-1.5 border border-brand text-brand text-xs font-bold rounded-full mb-8 tracking-wider">2026 全新學科託管模式</div>
@@ -86,7 +88,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </section>
 
-<!-- ========== WHY US ========== -->
 <section id="why" class="py-20 px-6">
 <div class="max-w-6xl mx-auto">
   <div class="text-center mb-16">
@@ -138,7 +139,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </section>
 
-<!-- ========== PRODUCTS ========== -->
 <section id="products" class="py-20 px-6 bg-gray-50">
 <div class="max-w-7xl mx-auto">
   <div class="text-center mb-12">
@@ -154,7 +154,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
     <button onclick="showProduct(3)" class="product-tab px-5 py-2.5 rounded-full text-sm font-medium border border-gray-300 text-ink-light">考前衝刺包</button>
   </div>
 
-  <!-- ===== Product 0: Weekly Tracking ===== -->
   <div class="product-panel" id="product0">
   <div class="grid lg:grid-cols-5 gap-8">
     <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
@@ -222,10 +221,12 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 
     <div class="lg:col-span-2 space-y-6">
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
-        <p class="font-bold text-sm mb-3">進度報告預覽</p>
-        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
-          <div class="text-center px-6"><div class="text-4xl mb-3">📋</div><p class="text-ink-muted text-sm font-medium">Weekly Progress Report</p><p class="text-xs text-ink-muted mt-1">品牌化 PDF 進度報告模板</p></div>
+        <p class="font-bold text-sm mb-3">每週進度報告預覽 (左右滑動)</p>
+        <div class="preview-slider">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077395/WhatsApp_Image_2026-04-13_at_18.45.16_jvbkrq.jpg" alt="Weekly Report 1">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077395/WhatsApp_Image_2026-04-13_at_18.45.17_p0zfxb.jpg" alt="Weekly Report 2">
         </div>
+        <p class="text-[10px] text-center text-ink-muted mt-2">← 左右滑動查看完整模板 →</p>
       </div>
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
         <p class="font-bold text-sm mb-4">常見問題</p>
@@ -252,7 +253,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
   </div>
   </div>
 
-  <!-- ===== Product 1: Full Management ===== -->
   <div class="product-panel hidden" id="product1">
   <div class="grid lg:grid-cols-5 gap-8">
     <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border-2 border-brand relative overflow-hidden">
@@ -305,10 +305,12 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
     </div>
     <div class="lg:col-span-2 space-y-6">
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
-        <p class="font-bold text-sm mb-3">月度總結報告預覽</p>
-        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
-          <div class="text-center px-6"><div class="text-4xl mb-3">📊</div><p class="text-ink-muted text-sm font-medium">Monthly Summary Report</p><p class="text-xs text-ink-muted mt-1">月度深度總結分析</p></div>
+        <p class="font-bold text-sm mb-3">月度總結報告預覽 (左右滑動)</p>
+        <div class="preview-slider">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077402/WhatsApp_Image_2026-04-13_at_18.45.07_qvzhbc.jpg" alt="Monthly Report 1">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077404/WhatsApp_Image_2026-04-13_at_18.45.15_ohkhbh.jpg" alt="Monthly Report 2">
         </div>
+        <p class="text-[10px] text-center text-ink-muted mt-2">← 左右滑動查看完整模板 →</p>
       </div>
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
         <p class="font-bold text-sm mb-4">常見問題</p>
@@ -332,7 +334,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
   </div>
   </div>
 
-  <!-- ===== Product 2: By-Topic ===== -->
   <div class="product-panel hidden" id="product2">
   <div class="grid lg:grid-cols-5 gap-8">
     <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
@@ -341,6 +342,13 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
         <div class="text-right"><p class="text-3xl font-black text-brand">$99<span class="text-base font-normal text-ink-muted">/份</span></p><p class="text-xs text-ink-muted mt-1">一次性購買・直接聯繫客服</p></div>
       </div>
       <p class="text-ink-light mb-6 leading-relaxed">針對性弱項擊破工具，無需報名任何計劃，直接向客服購買即可。每份 60 題，按真實學校考試風格出題，附完整答案及解題思路 PDF，學生可自行對答案學習。如有疑問可向客服有限度提問。</p>
+      
+      <div class="mb-8">
+        <a href="https://wa.me/85298560191?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%20Topic%20%E7%9B%AE%E9%8C%84" target="_blank" class="inline-flex items-center gap-2 bg-brand-light text-brand px-4 py-2 rounded-lg font-bold text-sm border border-brand/20 hover:bg-brand hover:text-white transition">
+          <span>📚 查看所有可用 Topic 目錄</span>
+        </a>
+      </div>
+
       <div class="mb-8">
         <p class="font-bold text-sm mb-3 text-brand">每份包含</p>
         <div class="space-y-3 text-sm">
@@ -373,10 +381,15 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
     </div>
     <div class="lg:col-span-2 space-y-6">
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
-        <p class="font-bold text-sm mb-3">練習卷預覽</p>
-        <div class="bg-gray-100 rounded-xl aspect-[3/4] flex items-center justify-center border-2 border-dashed border-gray-200">
-          <div class="text-center px-6"><div class="text-4xl mb-3">📝</div><p class="text-ink-muted text-sm font-medium">By-Topic Worksheet Sample</p><p class="text-xs text-ink-muted mt-1">60 題專項練習卷樣本</p></div>
+        <p class="font-bold text-sm mb-3">By-Topic 練習卷預覽 (左右滑動)</p>
+        <div class="preview-slider">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077394/WhatsApp_Image_2026-04-13_at_18.45.19_epw5a7.jpg" alt="ByTopic 1">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077394/WhatsApp_Image_2026-04-13_at_18.45.18_phyyws.jpg" alt="ByTopic 2">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077394/WhatsApp_Image_2026-04-13_at_18.45.17_1_cnyuwp.jpg" alt="ByTopic 3">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077394/WhatsApp_Image_2026-04-13_at_18.45.18_2_ypex3s.jpg" alt="ByTopic 4">
+          <img src="https://res.cloudinary.com/doik7chkw/image/upload/q_auto/f_auto/v1776077395/WhatsApp_Image_2026-04-13_at_18.45.18_1_bvc2j2.jpg" alt="ByTopic 5">
         </div>
+        <p class="text-[10px] text-center text-ink-muted mt-2">← 左右滑動查看完整模板 →</p>
       </div>
       <div class="bg-white rounded-2xl border border-gray-100 p-6">
         <p class="font-bold text-sm mb-4">常見問題</p>
@@ -391,7 +404,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
   </div>
   </div>
 
-  <!-- ===== Product 3: Exam Sprint ===== -->
   <div class="product-panel hidden" id="product3">
   <div class="grid lg:grid-cols-5 gap-8">
     <div class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border border-gray-100">
@@ -449,7 +461,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </section>
 
-<!-- ========== TESTIMONIALS ========== -->
 <section id="testimonials" class="py-20 px-6">
 <div class="max-w-6xl mx-auto">
   <div class="text-center mb-12">
@@ -511,7 +522,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </section>
 
-<!-- ========== ORDER ========== -->
 <section id="order" class="py-20 px-6 bg-gray-50">
 <div class="max-w-4xl mx-auto text-center">
   <p class="text-brand font-bold text-sm tracking-wider mb-3">HOW TO ORDER</p>
@@ -554,7 +564,6 @@ body { font-family: 'DM Sans','Noto Sans TC', sans-serif; }
 </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
 <footer class="bg-ink text-white py-12 px-6">
 <div class="max-w-5xl mx-auto text-center">
   <div class="flex items-center justify-center gap-2 mb-4">
